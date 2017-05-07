@@ -12,7 +12,7 @@ module.exports = {
     ],
     output: {
         path: __dirname + '/docs',
-        filename: "index_bundle.js"
+        filename: "index_bundle.js",
     },
     module: {
         loaders: [
