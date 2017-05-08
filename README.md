@@ -1,10 +1,10 @@
-# Standard React Boilerplate
+# Ghosana
 
-This repository contrains the standard boilerplate code to be used for any front-end development project in KLL.
+This repository contains the front-end code for the manifesto visualization project.
 
 ## Instructions
 
-1. Clone this repo using `git clone https://arkoblog@code.kathmandulivinglabs.org/arkoblog/react-boilerplate-kll.git`
+1. Clone this repo
 2. Install dependencies: `npm install`
 3. Start developing : `npm run start`
 
@@ -17,6 +17,7 @@ Refer to `package.json` for more details:
     "axios": "^0.16.1",
     "c3": "^0.4.11",
     "d3": "^4.8.0",
+    "d3-tip": "^0.7.1",
     "express": "^4.15.2",
     "leaflet": "^1.0.3",
     "lodash": "^4.17.4",
@@ -30,4 +31,4 @@ Refer to `package.json` for more details:
 Use `npm run production`
 
 
-#### -Arogya
+#### - Arogya
