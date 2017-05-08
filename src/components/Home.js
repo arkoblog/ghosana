@@ -65,7 +65,7 @@ var Home = React.createClass({
       }, this.completeLoading)
     },
     loadRawData: function() {
-        d3.csv('src/data/cpn_maoist2.csv')
+        d3.csv('https://raw.githubusercontent.com/arkoblog/ghosana/master/src/data/cpn_maoist2.csv')
             .row(function(d) {
                 var keys = Object.keys(d)
                     // console.log("Current",d[keys[0]])
