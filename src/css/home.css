@@ -1,0 +1,52 @@
+* {
+	font-family: 'Open Sans', sans-serif;
+}
+
+.btn-primary {
+	margin:5px;
+}
+
+div.tooltip {
+  position: absolute;
+  /*text-align: center;*/
+  /*width: 60px;*/
+  /*height: 28px;*/
+  padding: 12px;
+  font-size: 14px;
+  /*font: 12px sans-serif;*/
+  background-color: rgba(0,0,0,0.8);
+  border: 0px;
+  color:#fff;
+  /*border-radius: 8px;*/
+  pointer-events: none;
+}
+
+
+.btn-link:active{
+    color:red;
+}
+
+.disclaimer {
+	font-size: 10px;
+	color:red;
+}
+
+.btn-link:focus{
+    color:red;
+}
+
+a:active {
+  font-size: 18px;
+  border: 2px solid green;
+  border-radius: 100px;
+  width: 100px;
+  height: 100px;
+}
+
+a:target {
+  font-size: 18px;
+  border: 2px solid red;
+  border-radius: 100px;
+  width: 100px;
+  height: 100px;
+}

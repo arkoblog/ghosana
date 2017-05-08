@@ -1,4 +1,4 @@
-var d3Chart = require('./d3Chart');
+var d3Chart = require('./d3Chart_v3');
 var ReactDOM = require('react-dom');
 var React = require('react')
 
@@ -10,10 +10,20 @@ var Chart = React.createClass({
 
   componentDidMount: function() {
     var el = ReactDOM.findDOMNode(this);
+    // console.log(this.props.selectedCat)
+    var config = {
+      width: el.offsetWidth-10,
+      total_rows: this.props.rawdata.length,
+      no_of_columns: 17,
+      squareLength: function() {return this.width / this.no_of_columns}
+    }
+
+    // console.log(config.total_rows)
+
     d3Chart.create(el, {
-      width: '100%',
-      height: '300px'
-    }, this.getChartState());
+      width: config.width,
+      height: config.squareLength() * Math.ceil(config.total_rows/config.no_of_columns)
+    }, this.getChartState(), config, this.props.selectedCat, this.props.callback);
   },
 
   componentDidUpdate: function() {
@@ -22,7 +32,9 @@ var Chart = React.createClass({
   },
 
   getChartState: function() {
+    // console.log("myState", this.props)
     return {
+      rawdata: this.props.rawdata,
       data: this.props.data,
       domain: this.props.domain
     };
