@@ -30,7 +30,8 @@
     "lodash": "^4.17.4",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
-    "react-router": "^2.0.0-rc5"
+    "react-router": "^2.0.0-rc5",
+    "react-table": "^5.6.0"
   },
   "author": "Arogya Koirala",
   "license": "ISC",

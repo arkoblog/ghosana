@@ -3,7 +3,9 @@ var ReactRouter = require('react-router');
 var Link = ReactRouter.Link;
 var d3 = require('d3')
 var dataHelpers = require('./dataHelpers')
+var ReactTable = require('react-table').default;
 
+import 'react-table/react-table.css'
 require('../css/home.css')
 var Chart = require('./Chart');
 
@@ -63,6 +65,17 @@ var Home = React.createClass({
         isLoading:true,
         selectedCat: cat
       }, this.completeLoading)
+    },
+    filterCommitment: function(data,selectedCat){
+      console.log(data, selectedCat)
+      var filtered = data.filter(function(d){
+        return d.category_1 === this.state.selectedCat;
+      }.bind(this))
+      console.log(filtered)
+      if(this.state.selectedCat == "none") {
+        return data
+      }
+      return filtered;
     },
     loadRawData: function() {
         d3.csv('https://raw.githubusercontent.com/arkoblog/ghosana/master/src/data/cpn_maoist2.csv')
@@ -128,21 +141,35 @@ var Home = React.createClass({
                   <p className="disclaimer">DISCLAIMER: Please note that I've currently used dummy data for display in the charts.</p>
                   <hr/>
                   </div>
+                  <div className="row col-md-12">
                   <div className="col-md-4">
-                      <h4>CPN Maoist</h4>   
+                      <h4>Nepali Congress</h4>    
                       <Chart callback={this.updateParams} selectedCat={this.state.selectedCat} rawdata={this.state.rawData.nc} data={this.state.data} domain={this.state.domain} /> 
                   </div>
                   <div className="col-md-4">
-                      <h4>Nepali Congress</h4>    
+                      <h4>CPN Maoist</h4>   
                       <Chart callback={this.updateParams} selectedCat={this.state.selectedCat} rawdata={this.state.rawData.cpnm} data={this.state.data} domain={this.state.domain} /> 
                   </div>
                   <div className="col-md-4">
                       <h4>CPN UML</h4>    
                       <Chart callback={this.updateParams} selectedCat={this.state.selectedCat} rawdata={this.state.rawData.cpnuml} data={this.state.data} domain={this.state.domain} /> 
                   </div>
+                  </div>
+                  <div className="row col-md-12">
+                    <div className="col-md-4">
+                      <ReactTable showPageSizeOptions= {false} showPageJump = {false} defaultPageSize = {5} data={this.filterCommitment(this.state.rawData.nc, this.state.selectedCat)} columns = {[{header:'Commitment', accessor:'commitment'}]} />
+                    </div>
+                    <div className="col-md-4">
+                      <ReactTable showPageSizeOptions= {false} showPageJump = {false} defaultPageSize = {5} data={this.filterCommitment(this.state.rawData.cpnm, this.state.selectedCat)} columns = {[{header:'Commitment', accessor:'commitment'}]} />
+                    </div>
+                    <div className="col-md-4">
+                      <ReactTable showPageSizeOptions= {false} showPageJump = {false} defaultPageSize = {5} data={this.filterCommitment(this.state.rawData.cpnuml, this.state.selectedCat)} columns = {[{header:'Commitment', accessor:'commitment'}]} />
+                    </div>
+
+                  </div>
                   <div className="col-md-12">
                   <h4>how to read the chart?</h4>
-                  <p>Each individual grey box represents a commitment that was made by a political party in their manifesto. Commitments that fall under the same category has been packed together, and are represented by the same shade of grey.</p>
+                  <p>Each individual grey box represents a commitment that was made by a political party in their manifesto. Commitments that fall under the same category have been packed together, and are represented by the same shade of grey.</p>
                   <p>You can hover over a box to learn more about the commitment.</p>                  
                   <p>When hovering over a box, all commitments that fall under the same category as that of the box will be highlighted in red color. You can click on the commitment to compare category specific commitments across all three parties.</p>
 
