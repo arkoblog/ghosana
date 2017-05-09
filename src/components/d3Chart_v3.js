@@ -220,8 +220,13 @@ d3Chart._drawRectangles = function(el, data, config, selectedCat, callback) {
             // .filter(function(d) {return d.commitment != dat.commitment; })
             //   .style("stroke", "white");
             // console.log(dat)
-        });
+        }).append("text")
+    .attr("x", 200)
+    .attr("y", 400)
+    .attr("dy", ".35em")
+    .text(function(d) { return d.abbr; });;
 
+    // point.enter()
     // point
 
     point.exit()

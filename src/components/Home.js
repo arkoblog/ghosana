@@ -81,6 +81,7 @@ var Home = React.createClass({
         d3.csv('https://raw.githubusercontent.com/arkoblog/ghosana/master/src/data/cpn_maoist2.csv')
             .row(function(d) {
                 var keys = Object.keys(d)
+                    console.log(keys)
                     // console.log("Current",d[keys[0]])
                     // console.log(d)
                 var new_obj = {
@@ -93,7 +94,8 @@ var Home = React.createClass({
                         policy: d[keys[6]],
                         source_heading: d[keys[7]],
                         time_specified: d[keys[8]],
-                        pol_party: d[keys[9]]
+                        pol_party: d[keys[9]],
+                        abbr: d[keys[10]]
                     }
                     // console.log(JSON.stringify(new_obj))
                 return new_obj;
